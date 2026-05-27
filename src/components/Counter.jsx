@@ -3,6 +3,7 @@
 // import { createSelector } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
 import { actions } from "../store";
+import { useRef } from "react";
 
 function Counter() {
   //   const selectCounterShow = createSelector(
@@ -13,6 +14,7 @@ function Counter() {
 
   //   const { counter, show } = useSelector(selectCounterShow);
 
+  const inputRef = useRef(null);
   const counter = useSelector((state) => state.counter);
   const show = useSelector((state) => state.show);
   const dispatch = useDispatch();
@@ -28,10 +30,11 @@ function Counter() {
     dispatch(actions.toggleCounter());
   }
   function handleIncrease() {
-    dispatch(actions.increase(5));
+    if (!Number.isNaN(inputRef.current.value))
+      dispatch(actions.increase(Number.parseInt(inputRef.current.value)));
   }
   function handleReset() {
-     dispatch(actions.resetCounter());
+    dispatch(actions.resetCounter());
   }
 
   return (
@@ -45,8 +48,11 @@ function Counter() {
         <button className="counter" onClick={handleIncrement}>
           Increment
         </button>
+      </div>
+      <div className="counter-buttons">
+        <input type="number" ref={inputRef} defaultValue={0} />
         <button className="counter" onClick={handleIncrease}>
-          IncreaseBy5
+          Increase
         </button>
       </div>
       <div className="counter-buttons">

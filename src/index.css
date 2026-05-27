@@ -80,7 +80,10 @@ h1 {
 }
 
 p {
-  margin: 0;
+  padding: 1rem;
+  border-radius: 4px;
+  color: var(--text-h);
+  background: #4a0d79;
   font-size: x-large;
 }
 
@@ -96,7 +99,6 @@ p {
   background: var(--accent-bg);
   border: 2px solid transparent;
   transition: border-color 0.3s;
-  margin-bottom: 24px;
 
   &:hover {
     border-color: var(--accent-border);
@@ -124,4 +126,14 @@ p {
 .counter-buttons {
   display: flex;
   gap: 1rem;
+  margin-bottom: 10px;
+}
+
+.counter-buttons input {
+  border: none;
+  padding-left: 10px;
+  border-radius: 4px;
+  color: var(--text-h);
+  background: #44374f;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
